@@ -1,24 +1,23 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { Restaurants } from "./containers/Restaurants.jsx";
+import { Foods } from "./containers/Foods.jsx";
+import { Orders } from "./containers/Orders.jsx";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        // 店舗一覧ページ
+        <Route path="/restaurants" element={<Restaurants />}></Route>
+        // フード一覧ページ
+        <Route path="/foods" element={<Foods />}></Route>
+        // 注文ページ
+        <Route path="/orders" element={<Orders />}></Route>
+        <Route path="/restaurants/:restaurantsId/foods" element={<Foods />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
